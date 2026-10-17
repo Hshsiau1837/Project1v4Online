@@ -1,0 +1,103 @@
+using System.Collections.Generic;
+using System.Net.NetworkInformation;
+using System.Net.Sockets;
+using Unity.Netcode;
+using Unity.Netcode.Transports.UTP;
+using UnityEngine;
+
+/// <summary>
+/// Nhập IP/port, bấm Host hoặc Client (LAN). Gắn vào GameObject NetworkManager.
+/// Hiện IP LAN của máy để người kia nhập. Tự mở/khóa chuột cho khớp với ThirdPersonCamera.
+/// </summary>
+public class ConnectionUI : MonoBehaviour
+{
+    [SerializeField] string hostIp = "127.0.0.1";
+    [SerializeField] ushort port = 7777;
+
+    string portText;
+    string localIps;
+    bool? wasInGame;
+
+    void Start()
+    {
+        portText = port.ToString();
+        localIps = GetLocalIps();
+    }
+
+    void Update()
+    {
+        var nm = NetworkManager.Singleton;
+        bool inGame = nm != null && nm.IsListening;
+        if (inGame && Input.GetKeyDown(KeyCode.Tab))   // Tab: bật/tắt con trỏ chuột
+        {
+            bool unlock = Cursor.lockState == CursorLockMode.Locked;
+            Cursor.lockState = unlock ? CursorLockMode.None : CursorLockMode.Locked;
+            Cursor.visible = unlock;
+        }
+        if (wasInGame == inGame) return;       // chỉ đổi khi trạng thái đổi, để Esc trong Editor vẫn nhả được chuột
+        wasInGame = inGame;
+        Cursor.lockState = inGame ? CursorLockMode.Locked : CursorLockMode.None;
+        Cursor.visible = !inGame;
+    }
+
+    void OnGUI()
+    {
+        var nm = NetworkManager.Singleton;
+        if (nm == null) return;
+
+        GUILayout.BeginArea(new Rect(10, 10, 260, 320));
+        GUILayout.Label("LAN IP of this PC: " + localIps);
+
+        if (nm.IsListening)
+        {
+            if (nm.IsServer) GUILayout.Label("Host - Clients: " + nm.ConnectedClientsIds.Count);
+            else GUILayout.Label(nm.IsConnectedClient ? "Connected as client" : "Connecting...");
+            if (GUILayout.Button("Disconnect")) nm.Shutdown();
+        }
+        else
+        {
+            GUILayout.Label("Host IP (for Client):");
+            hostIp = GUILayout.TextField(hostIp);
+            GUILayout.Label("Port:");
+            portText = GUILayout.TextField(portText);
+
+            if (GUILayout.Button("Host")) StartNet(nm, true);
+            if (GUILayout.Button("Client")) StartNet(nm, false);
+        }
+        GUILayout.EndArea();
+    }
+
+    void StartNet(NetworkManager nm, bool host)
+    {
+        if (!ushort.TryParse(portText, out ushort p)) { Debug.LogError("Port không hợp lệ"); return; }
+        var utp = nm.GetComponent<UnityTransport>();
+        if (utp == null) { Debug.LogError("NetworkManager chưa dùng UnityTransport"); return; }
+
+        if (host)
+        {
+            // Nghe trên mọi card mạng (0.0.0.0) để máy khác trong LAN nối vào được.
+            utp.SetConnectionData("127.0.0.1", p, "0.0.0.0");
+            nm.StartHost();
+        }
+        else
+        {
+            utp.SetConnectionData(hostIp.Trim(), p);
+            nm.StartClient();
+        }
+    }
+
+    static string GetLocalIps()
+    {
+        var list = new List<string>();
+        foreach (var ni in NetworkInterface.GetAllNetworkInterfaces())
+        {
+            if (ni.OperationalStatus != OperationalStatus.Up) continue;
+            if (ni.NetworkInterfaceType != NetworkInterfaceType.Ethernet &&
+                ni.NetworkInterfaceType != NetworkInterfaceType.Wireless80211) continue;
+            foreach (var ua in ni.GetIPProperties().UnicastAddresses)
+                if (ua.Address.AddressFamily == AddressFamily.InterNetwork)
+                    list.Add(ua.Address.ToString());
+        }
+        return list.Count > 0 ? string.Join(", ", list) : "?";
+    }
+}
