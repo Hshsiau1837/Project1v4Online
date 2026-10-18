@@ -1,0 +1,43 @@
+
+using UnityEngine;
+using UnityEngine.UI;
+
+/// <summary>
+/// Lời nhắc "[F] Giải mã máy" và thanh tiến độ trên màn hình người chơi local.
+/// Gắn vào Canvas (KHÔNG gắn vào InteractPanel). Đọc dữ liệu từ PlayerInteractor.Local, không đồng bộ gì.
+/// </summary>
+public class InteractUI : MonoBehaviour
+{
+    [SerializeField] GameObject interactPanel;
+    [SerializeField] Text promptText;
+    [SerializeField] Slider progressSlider;   // Min 0, Max 1
+
+    void Update()
+    {
+        PlayerInteractor pi = PlayerInteractor.Local;
+        NetInteractable target = pi != null ? pi.Target : null;
+
+        bool show = target != null;
+        if (interactPanel != null && interactPanel.activeSelf != show) interactPanel.SetActive(show);
+        if (!show) return;
+
+        // Thứ tức thì (nhảy hầm)
+        bool instant = target.IsInstant;
+        if (progressSlider != null && progressSlider.gameObject.activeSelf == instant)
+            progressSlider.gameObject.SetActive(!instant);
+        if (instant)
+        {
+            if (promptText != null) promptText.text = $"[F] {target.PromptText}";
+            return;
+        }
+
+        float progress = Mathf.Clamp01(target.Progress.Value);
+        int pct = Mathf.RoundToInt(progress * 100f);
+
+        if (promptText != null)
+            promptText.text = pi.IsWorking
+                ? $"Đang giải mã... {pct}%"
+                : $"[F] {target.PromptText}  ({pct}%)";
+        if (progressSlider != null) progressSlider.value = progress;
+    }
+}

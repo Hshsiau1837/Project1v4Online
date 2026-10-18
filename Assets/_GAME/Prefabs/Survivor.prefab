@@ -108,7 +108,7 @@ MonoBehaviour:
   crouchSpeed: 2.5
   turnSpeed: 720
   gravity: -20
-  crouchKey: 306
+  crouchKey: 99
   crouchIsToggle: 0
   crouchHeightRatio: 0.6
   animator: {fileID: 0}
