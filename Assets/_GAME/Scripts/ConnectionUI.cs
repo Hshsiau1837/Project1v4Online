@@ -4,19 +4,19 @@ using System.Net.Sockets;
 using Unity.Netcode;
 using Unity.Netcode.Transports.UTP;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-/// <summary>
 /// Nhập IP/port, bấm Host hoặc Client (LAN). Gắn vào GameObject NetworkManager.
-/// Hiện IP LAN của máy để người kia nhập. Tự mở/khóa chuột cho khớp với ThirdPersonCamera.
-/// </summary>
+/// Hiện IP LAN của máy để người kia nhập. Chỉ khóa chuột trong scene trận (Match).
 public class ConnectionUI : MonoBehaviour
 {
     [SerializeField] string hostIp = "127.0.0.1";
     [SerializeField] ushort port = 7777;
+    [SerializeField] string matchSceneName = "Match";   
 
     string portText;
     string localIps;
-    bool? wasInGame;
+    bool? wasInMatch;                                   
 
     void Start()
     {
@@ -27,17 +27,23 @@ public class ConnectionUI : MonoBehaviour
     void Update()
     {
         var nm = NetworkManager.Singleton;
-        bool inGame = nm != null && nm.IsListening;
-        if (inGame && Input.GetKeyDown(KeyCode.Tab))   // Tab: bật/tắt con trỏ chuột
+        bool inMatch = nm != null && nm.IsListening
+                       && SceneManager.GetActiveScene().name == matchSceneName;
+
+        if (wasInMatch != inMatch)
+        {
+            wasInMatch = inMatch;
+            Cursor.lockState = inMatch ? CursorLockMode.Locked : CursorLockMode.None;
+            Cursor.visible = !inMatch;
+        }
+
+        // Tab: bật/tắt con trỏ trong trận để bấm Disconnect
+        if (inMatch && Input.GetKeyDown(KeyCode.Tab))
         {
             bool unlock = Cursor.lockState == CursorLockMode.Locked;
             Cursor.lockState = unlock ? CursorLockMode.None : CursorLockMode.Locked;
             Cursor.visible = unlock;
         }
-        if (wasInGame == inGame) return;       // chỉ đổi khi trạng thái đổi, để Esc trong Editor vẫn nhả được chuột
-        wasInGame = inGame;
-        Cursor.lockState = inGame ? CursorLockMode.Locked : CursorLockMode.None;
-        Cursor.visible = !inGame;
     }
 
     void OnGUI()

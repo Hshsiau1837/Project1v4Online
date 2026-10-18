@@ -8,7 +8,7 @@ public class ThirdPersonCamera : MonoBehaviour
     [Header("Cấu hình Camera")]
     public float distance = 2.5f;
     public float sensitivity = 3f;
-    public float offsetX = 0.8f;
+    public float offsetX = 0f;
     public float offsetY = 2f;
 
     [Header("Giới hạn góc nhìn")]
