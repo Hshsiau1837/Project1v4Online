@@ -1,0 +1,907 @@
+fileFormatVersion: 2
+guid: f9eb69be0eddcb042a5755b1724c3b80
+ModelImporter:
+  serializedVersion: 24600
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BodyMat
+    second: {fileID: 2100000, guid: 4345b2189390cc44c80298c4835e0114, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: HairMat
+    second: {fileID: 2100000, guid: f9a0560a9c2e7fa42bd277d7fadd6f17, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: HeadMat
+    second: {fileID: 2100000, guid: 4759ed6e3d4c67346a6946adbb0bebd7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WeaponMat
+    second: {fileID: 2100000, guid: d95e11ebe77db614db37af63815a35c9, type: 2}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+    searchTexturesGlobally: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: "\nClip 'Myers|MM_Attack01_BOW' has import animation warnings that might lower retargeting quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'joint_HipMaster_01' is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'joint_ThumbALT_01' has translation animation that will be discarded.\n\nClip 'Myers|MM_Attack01_IN' has import animation warnings that might lower retargeting quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'joint_HipMaster_01' is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip 'Myers|MM_Attack01_Miss_Out' has import animation warnings that might lower retargeting quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'joint_HipMaster_01' is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip 'Myers|MM_Attack01_Swing' has import animation warnings that might lower retargeting quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'joint_HipMaster_01' is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'joint_ThumbALT_01' has translation animation that will be discarded.\n\t'joint_IndexALT_01' has translation animation that will be discarded.\n\nClip 'Myers|MM_Attack01_Wipe' has import animation warnings that might lower retargeting quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'joint_HipMaster_01' is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip 'Myers|MM_Attack02_BOW' has import animation warnings that might lower retargeting quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'joint_HipMaster_01' is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'joint_ThumbALT_01' has translation animation that will be discarded.\n\nClip 'Myers|MM_Attack02_IN' has import animation warnings that might lower retargeting quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'joint_HipMaster_01' is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip 'Myers|MM_Attack02_Miss_Out' has import animation warnings that might lower retargeting quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'joint_HipMaster_01' is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip 'Myers|MM_Attack02_Swing' has import animation warnings that might lower retargeting quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'joint_HipMaster_01' is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'joint_ThumbALT_01' has translation animation that will be discarded.\n\t'joint_IndexALT_01' has translation animation that will be discarded.\n\nClip 'Myers|MM_Attack02_Wipe' has import animation warnings that might lower retargeting quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'joint_HipMaster_01' is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'joint_IndexART_01' has translation animation that will be discarded.\n\nClip 'Myers|MM_Carry_Attack01_BOW' has import animation warnings that might lower retargeting quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'joint_HipMaster_01' is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'joint_ClavicleRT_01' has translation animation that will be discarded.\n\nClip 'Myers|MM_Carry_Attack01_IN' has import animation warnings that might lower retargeting quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'joint_HipMaster_01' is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip 'Myers|MM_Carry_Attack01_Out' has import animation warnings that might lower retargeting quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'joint_HipMaster_01' is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip 'Myers|MM_Carry_Attack01_Swing' has import animation warnings that might lower retargeting quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'joint_HipMaster_01' is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip 'Myers|MM_Close_Hatch' has import animation warnings that might lower retargeting quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'joint_HipMaster_01' is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip 'Myers|MM_Close_Hatch_JerryCan' has import animation warnings that might lower retargeting quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'joint_HipMaster_01' is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip 'Myers|MM_Damage_Generator' has import animation warnings that might lower retargeting quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'joint_HipMaster_01' is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip 'Myers|MM_Destroy_Pallet' has import animation warnings that might lower retargeting quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'joint_HipMaster_01' is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip 'Myers|MM_Destroy_Wall' has import animation warnings that might lower retargeting quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'joint_HipMaster_01' is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip 'Myers|MM_Drop' has import animation warnings that might lower retargeting quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'joint_HipMaster_01' is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip 'Myers|MM_Grab_Locker_Interrupt' has import animation warnings that might lower retargeting quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'joint_HipMaster_01' is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'joint_TorsoA_01' has translation animation that will be discarded.\n\nClip 'Myers|MM_Hook_IN' has import animation warnings that might lower retargeting quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'joint_HipMaster_01' is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip 'Myers|MM_KickGnome' has import animation warnings that might lower retargeting quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'joint_HipMaster_01' is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip 'Myers|MM_KickPumpkin_In' has import animation warnings that might lower retargeting quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'joint_HipMaster_01' is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip 'Myers|MM_KickPumpkin_Out' has import animation warnings that might lower retargeting quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'joint_HipMaster_01' is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip 'Myers|MM_Land2Walk' has import animation warnings that might lower retargeting quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'joint_HipMaster_01' is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip 'Myers|MM_LandLight' has import animation warnings that might lower retargeting quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'joint_HipMaster_01' is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'joint_ClavicleLT_01' has translation animation that will be discarded.\n\t'joint_ClavicleRT_01' has translation animation that will be discarded.\n\nClip 'Myers|MM_Mori01' has import animation warnings that might lower retargeting quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'joint_HipMaster_01' is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip 'Myers|MM_Mori_EvilWithIn' has import animation warnings that might lower retargeting quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'joint_HipMaster_01' is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip 'Myers|MM_SlowRunBK' has import animation warnings that might lower retargeting quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'joint_HipMaster_01' is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip 'Myers|MM_SlowRunFT' has import animation warnings that might lower retargeting quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'joint_HipMaster_01' is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip 'Myers|MM_SlowRunLT' has import animation warnings that might lower retargeting quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'joint_HipMaster_01' is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip 'Myers|MM_SlowRunRT' has import animation warnings that might lower retargeting quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'joint_HipMaster_01' is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip 'Myers|MM_SlowWalkBK' has import animation warnings that might lower retargeting quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'joint_HipMaster_01' is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip 'Myers|MM_SlowWalkFT' has import animation warnings that might lower retargeting quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'joint_HipMaster_01' is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip 'Myers|MM_SlowWalkLT' has import animation warnings that might lower retargeting quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'joint_HipMaster_01' is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip 'Myers|MM_SlowWalkRT' has import animation warnings that might lower retargeting quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'joint_HipMaster_01' is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip 'Myers|MM_SnuffTotem' has import animation warnings that might lower retargeting quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'joint_HipMaster_01' is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip 'Myers|MM_Stun_Drop_IN' has import animation warnings that might lower retargeting quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'joint_HipMaster_01' is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip 'Myers|MM_Stun_Drop_OUT' has import animation warnings that might lower retargeting quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'joint_HipMaster_01' is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip 'Myers|MM_Stun_Pallet' has import animation warnings that might lower retargeting quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'joint_HipMaster_01' is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'joint_HipRT_01' has translation animation that will be discarded.\n\t'joint_HipLT_01' has translation animation that will be discarded.\n\nClip 'Myers|MM_WalkFT' has import animation warnings that might lower retargeting quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'joint_HipMaster_01' is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip 'Myers|MM_WalkLT' has import animation warnings that might lower retargeting quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'joint_HipMaster_01' is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip 'Myers|MM_WalkRT' has import animation warnings that might lower retargeting quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'joint_HipMaster_01' is inbetween humanoid transforms and has rotation animation that will be discarded.\n"
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.011
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    preBakeConvexCollisionMesh: 0
+    preBakeTriangleCollisionMesh: 0
+    importPhysicalCameras: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    generateMeshLods: 0
+    meshLodGenerationFlags: 0
+    maximumMeshLod: -1
+    importUVs: -1
+    importVertexColors: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    strictVertexDataChecks: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+    calculateBlendshapeNormalsDeltaFromImportedNormals: 0
+  referencedClips: []
+  importAnimation: 0
+  humanDescription:
+    serializedVersion: 3
+    human:
+    - boneName: joint_Pelvis_01
+      humanName: Hips
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: joint_HipLT_01
+      humanName: LeftUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: joint_HipRT_01
+      humanName: RightUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: joint_KneeLT_01
+      humanName: LeftLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: joint_KneeRT_01
+      humanName: RightLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: joint_FootLT_01
+      humanName: LeftFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: joint_FootRT_01
+      humanName: RightFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: joint_TorsoA_01
+      humanName: Spine
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: joint_TorsoB_01
+      humanName: Chest
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: joint_NeckA_01
+      humanName: Neck
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: joint_Head_01
+      humanName: Head
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: joint_ClavicleLT_01
+      humanName: LeftShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: joint_ClavicleRT_01
+      humanName: RightShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: joint_ShoulderLT_01
+      humanName: LeftUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: joint_ShoulderRT_01
+      humanName: RightUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: joint_ElbowLT_01
+      humanName: LeftLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: joint_ElbowRT_01
+      humanName: RightLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: joint_HandLT_01
+      humanName: LeftHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: joint_HandRT_01
+      humanName: RightHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: joint_ToeLT_01
+      humanName: LeftToes
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: joint_ToeRT_01
+      humanName: RightToes
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: joint_ThumbALT_01
+      humanName: Left Thumb Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: joint_ThumbBLT_01
+      humanName: Left Thumb Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: joint_ThumbCLT_01
+      humanName: Left Thumb Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: joint_IndexALT_01
+      humanName: Left Index Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: joint_IndexBLT_01
+      humanName: Left Index Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: joint_IndexCLT_01
+      humanName: Left Index Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: joint_FingerALT_01
+      humanName: Left Middle Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: joint_FingerBLT_01
+      humanName: Left Middle Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: joint_FingerCLT_01
+      humanName: Left Middle Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: joint_RingALT_01
+      humanName: Left Ring Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: joint_RingBLT_01
+      humanName: Left Ring Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: joint_RingCLT_01
+      humanName: Left Ring Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: joint_PinkyALT_01
+      humanName: Left Little Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: joint_PinkyBLT_01
+      humanName: Left Little Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: joint_PinkyCLT_01
+      humanName: Left Little Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: joint_ThumbART_01
+      humanName: Right Thumb Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: joint_ThumbBRT_01
+      humanName: Right Thumb Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: joint_ThumbCRT_01
+      humanName: Right Thumb Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: joint_IndexART_01
+      humanName: Right Index Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: joint_IndexBRT_01
+      humanName: Right Index Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: joint_IndexCRT_01
+      humanName: Right Index Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: joint_FingerART_01
+      humanName: Right Middle Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: joint_FingerBRT_01
+      humanName: Right Middle Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: joint_FingerCRT_01
+      humanName: Right Middle Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: joint_RingART_01
+      humanName: Right Ring Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: joint_RingBRT_01
+      humanName: Right Ring Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: joint_RingCRT_01
+      humanName: Right Ring Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: joint_PinkyART_01
+      humanName: Right Little Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: joint_PinkyBRT_01
+      humanName: Right Little Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: joint_PinkyCRT_01
+      humanName: Right Little Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: joint_TorsoC_01
+      humanName: UpperChest
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    skeleton:
+    - name: Myers(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Myers
+      parentName: Myers(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 100, y: 100, z: 100}
+    - name: joint_Char
+      parentName: Myers
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0.70710665, y: -0, z: -0, w: 0.7071069}
+      scale: {x: 1, y: 1, z: 1}
+    - name: joint_Pelvis_01
+      parentName: joint_Char
+      position: {x: 1.11758706e-10, y: 0.012433808, z: 0.0007001804}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: joint_HipMaster_01
+      parentName: joint_Pelvis_01
+      position: {x: -0, y: -1.1566856e-10, z: -1.4945835e-11}
+      rotation: {x: -0, y: 0.000000016536266, z: -0.0000000020670279, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: joint_HipRT_01
+      parentName: joint_HipMaster_01
+      position: {x: 0.0012759999, y: -0.0010260799, z: 0.0000608129}
+      rotation: {x: 0.034529775, y: -0.6752689, z: 0.012436303, w: 0.736658}
+      scale: {x: 1.0000006, y: 1.0000005, z: 1.0000002}
+    - name: joint_KneeRT_01
+      parentName: joint_HipRT_01
+      position: {x: 7.244944e-10, y: -0.004964814, z: 6.42538e-10}
+      rotation: {x: -0.000000035390258, y: 0.000000029802322, z: -0.00000008754432, w: 1}
+      scale: {x: 0.9999995, y: 1, z: 0.99999976}
+    - name: joint_FootRT_01
+      parentName: joint_KneeRT_01
+      position: {x: -0.0008180206, y: -0.005396246, z: -0.0000000020653008}
+      rotation: {x: 0.0026308757, y: 0.07276248, z: 0.516896, w: 0.8529462}
+      scale: {x: 1.0000002, y: 1.0000001, z: 0.9999999}
+    - name: joint_ToeRT_01
+      parentName: joint_FootRT_01
+      position: {x: -0.0000000023603437, y: -0.0015817335, z: 0.0000000010424852}
+      rotation: {x: 0.00000083376665, y: 0.000000081956394, z: 0.0909405, w: 0.99585634}
+      scale: {x: 1.0000001, y: 0.9999998, z: 1.0000005}
+    - name: joint_KneeRollRT_01
+      parentName: joint_KneeRT_01
+      position: {x: 8.523464e-11, y: -2.1144747e-10, z: 4.4584272e-10}
+      rotation: {x: 0.0000003951578, y: -0.00000050389554, z: -0.075151585, w: 0.9971721}
+      scale: {x: 1.0000001, y: 0.99999994, z: 0.9999999}
+    - name: joint_HipLT_01
+      parentName: joint_HipMaster_01
+      position: {x: -0.001276, y: -0.0010261257, z: 0.000060812148}
+      rotation: {x: 0.736656, y: -0.012429921, z: -0.6752716, w: -0.034522656}
+      scale: {x: 1.000003, y: 1.0000027, z: 1.0000027}
+    - name: joint_KneeLT_01
+      parentName: joint_HipLT_01
+      position: {x: -0.000000015945433, y: 0.0049647624, z: -0.000000013217925}
+      rotation: {x: -0, y: -0.000000089377856, z: 0.0000000037252899, w: 1}
+      scale: {x: 1, y: 1.0000011, z: 1.0000004}
+    - name: joint_FootLT_01
+      parentName: joint_KneeLT_01
+      position: {x: 0.00081799965, y: 0.005396256, z: -0.000000017328857}
+      rotation: {x: 0.0026438106, y: 0.07276178, z: 0.5168943, w: 0.8529473}
+      scale: {x: 0.9999995, y: 1.0000001, z: 1.0000001}
+    - name: joint_ToeLT_01
+      parentName: joint_FootLT_01
+      position: {x: -0.0000000021374225, y: 0.0015817264, z: 0.000000008700489}
+      rotation: {x: -0.0000002507586, y: 0.0000020451844, z: 0.09094128, w: 0.9958563}
+      scale: {x: 1.0000002, y: 1.0000013, z: 1.0000011}
+    - name: joint_KneeRollLT_01
+      parentName: joint_KneeLT_01
+      position: {x: -2.2947787e-10, y: -1.5735625e-10, z: 2.6226042e-11}
+      rotation: {x: -0.0000017501527, y: 0.0000014239432, z: -0.07515094, w: 0.99717224}
+      scale: {x: 0.9999999, y: 0.9999999, z: 1.0000001}
+    - name: joint_TorsoA_01
+      parentName: joint_Pelvis_01
+      position: {x: -0, y: 0.00014970485, z: -0.0000033453296}
+      rotation: {x: 0.03254524, y: -0.7063575, z: -0.03254524, w: 0.70635736}
+      scale: {x: 1.0000005, y: 1, z: 1.0000001}
+    - name: joint_TorsoB_01
+      parentName: joint_TorsoA_01
+      position: {x: 1.0490417e-10, y: 0.0021488238, z: 5.114078e-10}
+      rotation: {x: -0.000000011175872, y: 0.000000029802326, z: 0.137228, w: 0.9905395}
+      scale: {x: 1.0000002, y: 0.9999995, z: 0.99999994}
+    - name: joint_TorsoC_01
+      parentName: joint_TorsoB_01
+      position: {x: 4.1306017e-10, y: 0.002443317, z: -1.6391276e-10}
+      rotation: {x: -9.222837e-10, y: -0.0000001798206, z: -0.04777752, w: 0.99885803}
+      scale: {x: 0.9999995, y: 1.0000001, z: 1.0000006}
+    - name: joint_ClavicleLT_01
+      parentName: joint_TorsoC_01
+      position: {x: -0.00015204928, y: 0.0018106046, z: 0.00032999984}
+      rotation: {x: 0.0119423205, y: -0.5956027, z: -0.8005647, w: -0.06489225}
+      scale: {x: 1.0000008, y: 1.0000006, z: 1.0000005}
+    - name: joint_ShoulderRollOffLT_01
+      parentName: joint_ClavicleLT_01
+      position: {x: 0.00022095483, y: 0.0024935359, z: -0.00012340554}
+      rotation: {x: -0.16465774, y: -0.021970745, z: 0.034089804, w: 0.98551667}
+      scale: {x: 0.99999994, y: 1.0000006, z: 1.0000002}
+    - name: joint_ShoulderRollLT_01
+      parentName: joint_ShoulderRollOffLT_01
+      position: {x: -2.6226042e-11, y: 6.974488e-10, z: 5.2452084e-11}
+      rotation: {x: -0.00000013411045, y: -0.000000033527613, z: -0.00000007287599, w: 1}
+      scale: {x: 1.0000002, y: 1.0000002, z: 1.0000001}
+    - name: joint_ShoulderLT_01
+      parentName: joint_ClavicleLT_01
+      position: {x: -8.1300733e-10, y: 0.0024335766, z: -0.000000001249425}
+      rotation: {x: 0.12002295, y: -0.010193874, z: 0.046452697, w: 0.9916314}
+      scale: {x: 0.9999999, y: 1.0000005, z: 0.9999997}
+    - name: joint_ElbowLT_01
+      parentName: joint_ShoulderLT_01
+      position: {x: -0.0000000013113021, y: 0.0033521783, z: -6.818771e-10}
+      rotation: {x: -0.023063121, y: -0.004692902, z: -0.033991877, w: -0.999145}
+      scale: {x: 1.0000002, y: 0.9999995, z: 1.0000004}
+    - name: joint_HandLT_01
+      parentName: joint_ElbowLT_01
+      position: {x: -4.4584272e-10, y: 0.0034131655, z: -4.4912096e-10}
+      rotation: {x: -0.13044254, y: -0.13194266, z: 0.015643423, w: 0.9825127}
+      scale: {x: 0.9999995, y: 1.0000002, z: 0.9999992}
+    - name: joint_ThumbALT_01
+      parentName: joint_HandLT_01
+      position: {x: -0.0004528797, y: 0.0006465075, z: 0.000050924777}
+      rotation: {x: -0.12297597, y: 0.4393438, z: 0.39357576, w: 0.7980927}
+      scale: {x: 1.0000011, y: 1.0000013, z: 0.9999995}
+    - name: joint_ThumbBLT_01
+      parentName: joint_ThumbALT_01
+      position: {x: 1.180172e-10, y: 0.00047418624, z: -8.064508e-10}
+      rotation: {x: -0.0000009462235, y: 0.0000017583366, z: -0.036516, w: 0.9993331}
+      scale: {x: 0.9999997, y: 1.0000001, z: 0.9999999}
+    - name: joint_ThumbCLT_01
+      parentName: joint_ThumbBLT_01
+      position: {x: 0.0000000010752678, y: 0.00038174, z: 7.294118e-11}
+      rotation: {x: 0.0000008388612, y: -0.0000013133027, z: -0.011199534, w: 0.9999373}
+      scale: {x: 1.0000004, y: 1.0000006, z: 1.0000004}
+    - name: joint_IndexALT_01
+      parentName: joint_HandLT_01
+      position: {x: -0.0004013455, y: 0.0014037283, z: 0.0002343975}
+      rotation: {x: 0.017391482, y: -0.7034883, z: -0.027053688, w: -0.70997876}
+      scale: {x: 1.0000004, y: 1.000001, z: 1.0000002}
+    - name: joint_IndexBLT_01
+      parentName: joint_IndexALT_01
+      position: {x: 0.0000000013309717, y: 0.00047285113, z: -2.360344e-10}
+      rotation: {x: 0.00000010058282, y: -0.0000013113018, z: -0.040385384, w: 0.9991842}
+      scale: {x: 1.0000001, y: 1.000001, z: 1.0000011}
+    - name: joint_IndexCLT_01
+      parentName: joint_IndexBLT_01
+      position: {x: -1.3113021e-11, y: 0.00035453448, z: -0.0000000011408329}
+      rotation: {x: 0.0000014069954, y: -0.0000026798234, z: -0.047356836, w: 0.99887806}
+      scale: {x: 1, y: 0.99999994, z: 0.9999999}
+    - name: joint_FingerALT_01
+      parentName: joint_HandLT_01
+      position: {x: -0.000059581373, y: 0.0015108635, z: 0.0002551016}
+      rotation: {x: 0.0052941064, y: -0.7608595, z: -0.014100825, w: -0.6487419}
+      scale: {x: 1.0000005, y: 1.0000014, z: 1.0000012}
+    - name: joint_FingerBLT_01
+      parentName: joint_FingerALT_01
+      position: {x: 6.29425e-10, y: 0.00058802805, z: 4.1961667e-10}
+      rotation: {x: -0.0000006407499, y: 0.0000011920928, z: -0.034900043, w: 0.99939084}
+      scale: {x: 1.0000001, y: 1.0000007, z: 1.0000006}
+    - name: joint_FingerCLT_01
+      parentName: joint_FingerBLT_01
+      position: {x: -0.0000000010621547, y: 0.0003460339, z: -5.769729e-10}
+      rotation: {x: 0.0000007958001, y: -0.0000044221824, z: -0.03489618, w: 0.99939096}
+      scale: {x: 0.99999964, y: 1.0000004, z: 0.99999994}
+    - name: joint_RingALT_01
+      parentName: joint_HandLT_01
+      position: {x: 0.0002883621, y: 0.0014510701, z: 0.000120145116}
+      rotation: {x: -0.015072187, y: -0.8138068, z: -0.0055379863, w: -0.5809137}
+      scale: {x: 1.0000002, y: 1.0000008, z: 1.0000005}
+    - name: joint_RingBLT_01
+      parentName: joint_RingALT_01
+      position: {x: -9.965896e-10, y: 0.0005173563, z: 2.360344e-10}
+      rotation: {x: 0.00000024493778, y: 0.0000018477435, z: -0.0349008, w: 0.9993908}
+      scale: {x: 0.99999994, y: 1.0000006, z: 1.0000007}
+    - name: joint_RingCLT_01
+      parentName: joint_RingBLT_01
+      position: {x: -9.703636e-10, y: 0.00029569698, z: 4.5895572e-11}
+      rotation: {x: 0.00000016311826, y: -0.0000021786257, z: -0.034897756, w: 0.9993909}
+      scale: {x: 1, y: 1.0000007, z: 1.0000002}
+    - name: joint_PinkyALT_01
+      parentName: joint_HandLT_01
+      position: {x: 0.0006093604, y: 0.0013768995, z: -0.000043933236}
+      rotation: {x: -0.03453918, y: -0.8072183, z: -0.00537242, w: -0.5892172}
+      scale: {x: 1.0000004, y: 1.0000004, z: 1.0000002}
+    - name: joint_PinkyBLT_01
+      parentName: joint_PinkyALT_01
+      position: {x: 0.00000000125885, y: 0.00036142548, z: 3.147125e-10}
+      rotation: {x: -0.0000000037252899, y: -0.0000009834765, z: -0.03489879, w: 0.99939084}
+      scale: {x: 1, y: 1.0000001, z: 1.0000004}
+    - name: joint_PinkyCLT_01
+      parentName: joint_PinkyBLT_01
+      position: {x: -0.0000000011277198, y: 0.00025630128, z: -3.6716458e-10}
+      rotation: {x: 0.00000012409542, y: -0.00000032976357, z: -0.11473988, w: 0.9933956}
+      scale: {x: 0.99999946, y: 1.0000012, z: 1.0000004}
+    - name: joint_HandRoll01LT_01
+      parentName: joint_ElbowLT_01
+      position: {x: -6.9171185e-10, y: 0.0034131638, z: 6.753206e-10}
+      rotation: {x: -0.000000036003655, y: -0.7071068, z: -0.00000015770888, w: 0.70710677}
+      scale: {x: 0.9999999, y: 0.9999996, z: 0.99999946}
+    - name: joint_HandRoll01LT_02
+      parentName: joint_ElbowLT_01
+      position: {x: -9.1791144e-11, y: 0.0017065833, z: 0.0000000011014938}
+      rotation: {x: 0.0000001577115, y: -0.7071068, z: 0.00000008070964, w: 0.7071067}
+      scale: {x: 0.9999999, y: 0.9999996, z: 1}
+    - name: joint_ShoulderRollLT_02
+      parentName: joint_ShoulderLT_01
+      position: {x: 5.2452084e-11, y: 0.0016760888, z: -8.9168545e-10}
+      rotation: {x: -0.0000001937151, y: 0.000000018626451, z: 0.000000022817403, w: 1}
+      scale: {x: 1.0000001, y: 0.99999976, z: 1.0000006}
+    - name: joint_ClavicleRT_01
+      parentName: joint_TorsoC_01
+      position: {x: -0.00015205007, y: 0.0018106134, z: -0.0003300001}
+      rotation: {x: 0.59560233, y: 0.01194171, z: -0.06489311, w: 0.80056494}
+      scale: {x: 1.0000011, y: 1.0000002, z: 1.0000004}
+    - name: joint_ShoulderRollOffRT_01
+      parentName: joint_ClavicleRT_01
+      position: {x: 0.00021562717, y: -0.0024202324, z: 0.000027757906}
+      rotation: {x: -0.16465813, y: -0.021972356, z: 0.034090016, w: 0.9855165}
+      scale: {x: 0.99999994, y: 1.0000004, z: 0.9999998}
+    - name: joint_ShoulderRollRT_01
+      parentName: joint_ShoulderRollOffRT_01
+      position: {x: 4.1961667e-10, y: -0.0000000013113021, z: 3.2782552e-10}
+      rotation: {x: -0.000000014901161, y: -0.000000044703484, z: -0.000000030966476, w: 1}
+      scale: {x: 1.0000001, y: 0.9999998, z: 1.0000002}
+    - name: joint_ShoulderRT_01
+      parentName: joint_ClavicleRT_01
+      position: {x: -6.29425e-10, y: -0.0024335836, z: 0.00000003703117}
+      rotation: {x: 0.12002057, y: -0.010195997, z: 0.046452332, w: 0.9916316}
+      scale: {x: 1.0000002, y: 1.0000001, z: 1.0000006}
+    - name: joint_ElbowRT_01
+      parentName: joint_ShoulderRT_01
+      position: {x: 0.0000000010490417, y: -0.003352168, z: -0.000000015945433}
+      rotation: {x: 0.023063203, y: 0.0046979967, z: 0.033991523, w: 0.9991449}
+      scale: {x: 1.0000004, y: 1.0000007, z: 1.0000001}
+    - name: joint_HandRT_01
+      parentName: joint_ElbowRT_01
+      position: {x: 0.0000000010490417, y: -0.0034131561, z: -0.00000002087593}
+      rotation: {x: 0.13044257, y: 0.13194817, z: -0.015643455, w: -0.982512}
+      scale: {x: 1.0000008, y: 1.0000005, z: 1.0000004}
+    - name: joint_ThumbART_01
+      parentName: joint_HandRT_01
+      position: {x: 0.0004916642, y: -0.0005027973, z: -0.000040888077}
+      rotation: {x: 0.12299373, y: -0.4393464, z: -0.39354756, w: -0.79810256}
+      scale: {x: 1.0000006, y: 1, z: 0.99999964}
+    - name: joint_ThumbBRT_01
+      parentName: joint_ThumbART_01
+      position: {x: 0.000000029863678, y: -0.00047368402, z: 0.000000004196167}
+      rotation: {x: -0.0000052154046, y: -0.00000008940694, z: -0.036467012, w: 0.9993349}
+      scale: {x: 1, y: 1.0000008, z: 1.0000004}
+    - name: joint_ThumbCRT_01
+      parentName: joint_ThumbBRT_01
+      position: {x: -0.000000008982419, y: -0.00038176496, z: 0.0000000020456312}
+      rotation: {x: 0.0000008398417, y: 0.00000019890662, z: -0.01120004, w: 0.9999373}
+      scale: {x: 1.0000004, y: 0.9999996, z: 1.0000004}
+    - name: joint_IndexART_01
+      parentName: joint_HandRT_01
+      position: {x: 0.0004411628, y: -0.0015043956, z: -0.00024981314}
+      rotation: {x: 0.017420473, y: -0.7034901, z: -0.027022472, w: -0.7099775}
+      scale: {x: 0.99999875, y: 1.0000005, z: 0.9999994}
+    - name: joint_IndexBRT_01
+      parentName: joint_IndexART_01
+      position: {x: 0.000000031720397, y: -0.00047280078, z: 0.000000006268024}
+      rotation: {x: 0.0000018607825, y: 0.000000834465, z: -0.04034158, w: 0.999186}
+      scale: {x: 1.0000006, y: 1.0000004, z: 1.0000007}
+    - name: joint_IndexCRT_01
+      parentName: joint_IndexBRT_01
+      position: {x: -7.8678125e-10, y: -0.0003545268, z: 0.000000006805658}
+      rotation: {x: 0.0000013015573, y: 0.0000016596102, z: -0.047356836, w: 0.99887806}
+      scale: {x: 0.9999997, y: 1.0000002, z: 1}
+    - name: joint_FingerART_01
+      parentName: joint_HandRT_01
+      position: {x: 0.000059573766, y: -0.0015108823, z: -0.00025508236}
+      rotation: {x: 0.005288393, y: -0.7608613, z: -0.014105456, w: -0.6487397}
+      scale: {x: 0.9999989, y: 1.0000006, z: 1.0000001}
+    - name: joint_FingerBRT_01
+      parentName: joint_FingerART_01
+      position: {x: -0.000000017320662, y: -0.0005880626, z: -0.0000000024418905}
+      rotation: {x: -0.00000053644175, y: -0.0000006258487, z: -0.03490029, w: 0.99939084}
+      scale: {x: 1.0000006, y: 1.0000004, z: 0.99999964}
+    - name: joint_FingerCRT_01
+      parentName: joint_FingerBRT_01
+      position: {x: 0.000000025753973, y: -0.0003459734, z: 0.0000000059498286}
+      rotation: {x: 0.0000006920362, y: 0.0000020703103, z: -0.034897164, w: 0.9993909}
+      scale: {x: 1, y: 0.9999999, z: 1}
+    - name: joint_RingART_01
+      parentName: joint_HandRT_01
+      position: {x: -0.00028835845, y: -0.0014510351, z: -0.00012016804}
+      rotation: {x: -0.015076226, y: -0.8138096, z: -0.0055431346, w: -0.58090955}
+      scale: {x: 0.999999, y: 1.0000007, z: 0.9999997}
+    - name: joint_RingBRT_01
+      parentName: joint_RingART_01
+      position: {x: -0.0000000132310385, y: -0.0005173965, z: -0.000000004301071}
+      rotation: {x: 0.00000019278373, y: -0.0000011622903, z: -0.034900807, w: 0.99939084}
+      scale: {x: 1.0000011, y: 1, z: 1.0000002}
+    - name: joint_RingCRT_01
+      parentName: joint_RingBRT_01
+      position: {x: -0.00000002465248, y: -0.00029574137, z: -0.0000000052058695}
+      rotation: {x: 0.00000003967322, y: 0.0000015744308, z: -0.03489772, w: 0.99939096}
+      scale: {x: 1.0000007, y: 1.0000012, z: 1.0000004}
+    - name: joint_PinkyART_01
+      parentName: joint_HandRT_01
+      position: {x: -0.00061190734, y: -0.0013213388, z: 0.00008198596}
+      rotation: {x: -0.03454254, y: -0.8072202, z: -0.005373984, w: -0.58921427}
+      scale: {x: 0.9999991, y: 1.0000008, z: 0.9999995}
+    - name: joint_PinkyBRT_01
+      parentName: joint_PinkyART_01
+      position: {x: -0.000000011162459, y: -0.00036144562, z: 0.0000000014948844}
+      rotation: {x: 0.00000008940697, y: 0.000000834465, z: -0.034898743, w: 0.9993909}
+      scale: {x: 1.0000004, y: 1, z: 1}
+    - name: joint_PinkyCRT_01
+      parentName: joint_PinkyBRT_01
+      position: {x: -0.000000018463133, y: -0.00025634497, z: 6.687641e-10}
+      rotation: {x: -0.00000018655868, y: 0.00000025711927, z: -0.11473989, w: 0.99339557}
+      scale: {x: 1.0000004, y: 1.0000008, z: 1.0000001}
+    - name: Weapon
+      parentName: joint_HandRT_01
+      position: {x: -0.0012689069, y: -0.0009581723, z: 0.0002994348}
+      rotation: {x: -0.7622752, y: -0.604355, z: -0.15674862, w: 0.17065023}
+      scale: {x: 0.9999996, y: 0.99999976, z: 1.0000008}
+    - name: joint_HandRoll01RT_01
+      parentName: joint_ElbowRT_01
+      position: {x: 0.0000000010490417, y: -0.0034131561, z: -0.000000020823478}
+      rotation: {x: 0.00000013184365, y: 0.70710695, z: 0.00000031519573, w: -0.7071067}
+      scale: {x: 1.0000007, y: 1.0000001, z: 1.0000008}
+    - name: joint_HandRoll01RT_02
+      parentName: joint_ElbowRT_01
+      position: {x: -0.0000000011539458, y: -0.0017065816, z: -0.000000014162063}
+      rotation: {x: 0.00000016164597, y: 0.70710695, z: 0.00000031519573, w: -0.7071067}
+      scale: {x: 1.0000004, y: 0.9999999, z: 1.0000002}
+    - name: joint_ShoulderRollRT_02
+      parentName: joint_ShoulderRT_01
+      position: {x: 2.0980834e-10, y: -0.0016760844, z: -0.0000000073432918}
+      rotation: {x: 0.000000029802319, y: 0.000000054016702, z: -0.00000003795139, w: 1}
+      scale: {x: 1.0000006, y: 1.0000001, z: 1.0000001}
+    - name: joint_NeckA_01
+      parentName: joint_TorsoC_01
+      position: {x: 0.0001257334, y: 0.0024976442, z: 7.8678127e-11}
+      rotation: {x: -0.000000093999326, y: 0.00000017972874, z: -0.26418367, w: 0.9644724}
+      scale: {x: 1.0000002, y: 1.0000002, z: 1}
+    - name: joint_Head_01
+      parentName: joint_NeckA_01
+      position: {x: -0.00038134464, y: 0.0010484421, z: -1.5735625e-10}
+      rotation: {x: 0.00000002436105, y: 0.00000032475734, z: 0.2216758, w: 0.9751204}
+      scale: {x: 1.0000004, y: 1.0000005, z: 1.0000007}
+    - name: MyersMesh
+      parentName: Myers(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 100, y: 100, z: 100}
+    - name: WeaponMesh
+      parentName: Myers(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 100, y: 100, z: 100}
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 0.011
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 3
+  humanoidOversampling: 1
+  avatarSetup: 1
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  importBlendShapeDeformPercent: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

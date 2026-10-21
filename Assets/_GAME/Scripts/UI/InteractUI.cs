@@ -17,11 +17,20 @@ public class InteractUI : MonoBehaviour
         PlayerInteractor pi = PlayerInteractor.Local;
         NetInteractable target = pi != null ? pi.Target : null;
 
-        bool show = target != null;
+        string extra = target == null ? GetExtraPrompt() : null;   // nhảy cửa sổ, hoặc gợi ý của Hunter
+        bool show = target != null || extra != null;
         if (interactPanel != null && interactPanel.activeSelf != show) interactPanel.SetActive(show);
         if (!show) return;
 
-        // Thứ tức thì (nhảy hầm)
+        // Chỉ có lời nhắc (không có thanh tiến độ).
+        if (target == null)
+        {
+            if (progressSlider != null && progressSlider.gameObject.activeSelf) progressSlider.gameObject.SetActive(false);
+            if (promptText != null) promptText.text = extra;
+            return;
+        }
+
+        // Thứ tức thì (nhảy hầm): chỉ hiện lời nhắc, ẩn thanh tiến độ.
         bool instant = target.IsInstant;
         if (progressSlider != null && progressSlider.gameObject.activeSelf == instant)
             progressSlider.gameObject.SetActive(!instant);
@@ -39,5 +48,16 @@ public class InteractUI : MonoBehaviour
                 ? $"Đang giải mã... {pct}%"
                 : $"[F] {target.PromptText}  ({pct}%)";
         if (progressSlider != null) progressSlider.value = progress;
+    }
+
+    static string GetExtraPrompt()
+    {
+        PlayerVault pv = PlayerVault.Local;
+        if (pv != null && pv.Target != null) return $"[{pv.Key}] Nhảy qua cửa sổ";
+
+        HunterAttack ha = HunterAttack.Local;
+        if (ha != null && !string.IsNullOrEmpty(ha.Prompt)) return ha.Prompt;
+
+        return null;
     }
 }

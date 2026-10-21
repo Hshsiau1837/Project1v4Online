@@ -31,6 +31,8 @@ public class MatchManager : NetworkBehaviour
     public readonly NetworkVariable<byte> DungeonPhase = new NetworkVariable<byte>(DungeonHidden);
     /// <summary>Số Survivor còn trên bản đồ (chưa thoát, chưa bị loại, còn kết nối).</summary>
     public readonly NetworkVariable<int> AliveSurvivors = new NetworkVariable<int>(0);
+    /// <summary>Số Survivor đã bị loại (hết giờ trên ghế tên lửa...). Luật thắng/thua dùng ở tuần 4.</summary>
+    public readonly NetworkVariable<int> Eliminated = new NetworkVariable<int>(0);
 
     public int MachinesRequired => machinesRequired;
     public int TotalMachines { get; private set; }
@@ -146,6 +148,23 @@ public class MatchManager : NetworkBehaviour
         st.ServerSet(SurvivorHealth.Escaped);
         Escaped.Value++;
         Debug.Log($"Survivor {clientId} đã thoát. Tổng thoát: {Escaped.Value}");
+    }
+
+    /// <summary>Gắn cờ Bị loại: ẩn nhân vật, khóa di chuyển, tăng bộ đếm. Gọi từ ghế tên lửa khi hết giờ.</summary>
+    public void OnSurvivorEliminated(ulong clientId)
+    {
+        if (!IsServer) return;
+        if (!NetworkManager.ConnectedClients.TryGetValue(clientId, out var c) || c.PlayerObject == null) return;
+
+        PlayerRoleInfo info = c.PlayerObject.GetComponent<PlayerRoleInfo>();
+        if (info == null || info.CurrentRole != Role.Survivor) return;
+
+        SurvivorState st = c.PlayerObject.GetComponent<SurvivorState>();
+        if (st == null || st.IsOut) return;                              // đã tính rồi
+
+        st.ServerSet(SurvivorHealth.Eliminated);
+        Eliminated.Value++;
+        Debug.Log($"Survivor {clientId} bị loại. Tổng bị loại: {Eliminated.Value}");
     }
 
     /// <summary>Nút "Về phòng chờ" (chỉ host): cả phòng quay lại scene Lobby để chơi trận mới.</summary>

@@ -64,7 +64,8 @@ public class PlayerInteractor : NetworkBehaviour
         if (current != null)
         {
             bool tooFar = current.FlatDistance(transform.position) > current.Range + 0.5f;
-            if (moving || tooFar || current.Done.Value || !current.IsAvailable || Input.GetKeyDown(interactKey))
+            // !CanUse: người khác vừa giữ ghế trước mình (hoặc mình không còn được dùng thứ này) thì thôi, khỏi hiện tiến độ của người khác.
+            if (moving || tooFar || current.Done.Value || !current.IsAvailable || !current.CanUse(OwnerClientId) || Input.GetKeyDown(interactKey))
             {
                 NetStatsLogger.Mark("interact_stop");
                 current.StopUseServerRpc();
@@ -89,7 +90,7 @@ public class PlayerInteractor : NetworkBehaviour
         float bestDist = float.MaxValue;
         foreach (NetInteractable it in FindObjectsByType<NetInteractable>(FindObjectsSortMode.None))
         {
-            if (!it.IsSpawned || !it.IsAvailable) continue;
+            if (!it.IsSpawned || !it.IsAvailable || !it.CanUse(OwnerClientId)) continue;
             float d = it.FlatDistance(transform.position);
             if (d <= it.Range && d < bestDist) { bestDist = d; best = it; }
         }

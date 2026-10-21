@@ -12,7 +12,7 @@ public abstract class NetInteractable : NetworkBehaviour
 {
     [SerializeField] protected float duration = 60f;   // giây nếu 1 người làm; nhiều người thì nhanh hơn
     [SerializeField] float range = 2.5f;
-    [SerializeField] Renderer visual;                   // để trống thì tự tìm Renderer
+    [SerializeField] protected Renderer visual;                   // để trống thì tự tìm Renderer
 
     public readonly NetworkVariable<float> Progress = new NetworkVariable<float>(0f);
     public readonly NetworkVariable<bool> Done = new NetworkVariable<bool>(false);
@@ -28,8 +28,14 @@ public abstract class NetInteractable : NetworkBehaviour
     public virtual bool IsAvailable => !Done.Value;
     /// <summary>true = nhấn F là xong ngay, không có thanh tiến độ (ví dụ nhảy hầm).</summary>
     public virtual bool IsInstant => false;
+    /// <summary>Server hỏi trước khi cho userId làm (ví dụ chặn tự hồi máu cho chính mình). Mặc định cho phép.</summary>
+    public virtual bool CanUse(ulong userId) => true;
 
     protected virtual void OnCompleted() { }
+    /// <summary>Server: có người vừa bắt đầu làm. Lớp con ghi đè nếu cần (ghế tên lửa: khóa người cứu).</summary>
+    protected virtual void OnUserAdded(ulong id) { }
+    /// <summary>Server: có người vừa buông (đi xa, nhấn F lần nữa, bị đánh, rớt mạng...). Không gọi khi làm xong.</summary>
+    protected virtual void OnUserRemoved(ulong id) { }
     protected virtual Color GetColor() => Color.Lerp(Color.red, Color.green, Progress.Value);
 
     /// <summary>Khoảng cách trên mặt phẳng ngang (bỏ qua chênh lệch độ cao).</summary>
@@ -44,11 +50,23 @@ public abstract class NetInteractable : NetworkBehaviour
     public void StartUseServerRpc(ServerRpcParams p = default)
     {
         ulong id = p.Receive.SenderClientId;
-        if (!IsAvailable) return;
+        if (!IsAvailable || !CanUse(id)) return;
         if (!TryGetSurvivor(id, out Transform t)) return;
         if (FlatDistance(t.position) > range + 0.5f) return;   // dung sai cho độ trễ
         if (IsInstant) { CompleteInstantly(id); return; }
-        users.Add(id);
+        if (users.Add(id)) OnUserAdded(id);
+    }
+
+    /// <summary>
+    /// Đưa tiến độ về 0 để dùng lại (ghế tên lửa, hồi máu). keepFinishers = true: những người vừa làm xong vẫn tiếp tục làm.
+    /// Gọi trong OnCompleted.
+    /// </summary>
+    protected void ServerResetProgress(bool keepFinishers = false)
+    {
+        serverProgress = 0f;
+        Progress.Value = 0f;
+        Done.Value = false;
+        if (keepFinishers) foreach (ulong id in finishers) users.Add(id);
     }
 
     /// <summary>Hoàn thành ngay trên server cho thứ IsInstant (không qua thanh tiến độ).</summary>
@@ -66,7 +84,7 @@ public abstract class NetInteractable : NetworkBehaviour
     [ServerRpc(RequireOwnership = false)]
     public void StopUseServerRpc(ServerRpcParams p = default)
     {
-        users.Remove(p.Receive.SenderClientId);
+        if (users.Remove(p.Receive.SenderClientId)) OnUserRemoved(p.Receive.SenderClientId);
     }
 
     /// <summary>
@@ -93,20 +111,26 @@ public abstract class NetInteractable : NetworkBehaviour
         return true;
     }
 
-    protected virtual void Update()
+    /// <summary>Tô màu theo tiến độ (mọi máy tự làm). Lớp con ghi đè nếu muốn màu khác hoặc không tô.</summary>
+    protected virtual void UpdateVisual()
     {
         if (visual == null) visual = GetComponentInChildren<Renderer>();
-        if (visual != null) visual.material.color = GetColor();   // mọi máy tự tô màu
+        if (visual != null) visual.material.color = GetColor();
+    }
+
+    protected virtual void Update()
+    {
+        UpdateVisual();
 
         if (!IsServer || Done.Value || users.Count == 0) return;
 
         toRemove.Clear();
         foreach (ulong id in users)
         {
-            if (!IsAvailable || !TryGetSurvivor(id, out Transform t) || FlatDistance(t.position) > range + 0.5f)
+            if (!IsAvailable || !CanUse(id) || !TryGetSurvivor(id, out Transform t) || FlatDistance(t.position) > range + 0.5f)
                 toRemove.Add(id);   // đi xa / rớt mạng / bị đánh / hết hiệu lực -> buông
         }
-        foreach (ulong id in toRemove) users.Remove(id);
+        foreach (ulong id in toRemove) { if (users.Remove(id)) OnUserRemoved(id); }
         if (users.Count == 0) return;
 
         serverProgress = Mathf.Min(1f, serverProgress + users.Count * Time.deltaTime / duration);

@@ -88,14 +88,17 @@ public class ConnectionUI : MonoBehaviour
 
         if (host)
         {
-            // Nghe trên mọi card mạng (0.0.0.0) để máy khác trong LAN nối vào được.
-            utp.SetConnectionData("127.0.0.1", p, "0.0.0.0");
+            // forceOverrideCommandLineArgs = true: bỏ qua mọi tham số -ip/-port trên dòng lệnh
+            utp.SetConnectionData(true, "127.0.0.1", p, "0.0.0.0");
             nm.StartHost();
+            Debug.Log("HOST: listen=" + utp.ConnectionData.ServerListenAddress +
+                      " | listenEndpoint=" + utp.ConnectionData.ListenEndPoint);
         }
         else
         {
             utp.SetConnectionData(hostIp.Trim(), p);
             nm.StartClient();
+            Debug.Log("CLIENT: ket noi toi " + hostIp.Trim() + ":" + p);
         }
     }
 
