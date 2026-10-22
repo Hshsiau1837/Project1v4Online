@@ -111,16 +111,11 @@ public abstract class NetInteractable : NetworkBehaviour
         return true;
     }
 
-    /// <summary>Tô màu theo tiến độ (mọi máy tự làm). Lớp con ghi đè nếu muốn màu khác hoặc không tô.</summary>
-    protected virtual void UpdateVisual()
-    {
-        if (visual == null) visual = GetComponentInChildren<Renderer>();
-        if (visual != null) visual.material.color = GetColor();
-    }
+   
 
     protected virtual void Update()
     {
-        UpdateVisual();
+        
 
         if (!IsServer || Done.Value || users.Count == 0) return;
 

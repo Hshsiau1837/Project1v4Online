@@ -36,5 +36,5 @@ public class HealInteractable : NetInteractable
     }
 
     // Đừng tô màu nhân vật theo tiến độ (SurvivorState đang tô màu theo trạng thái).
-    protected override void UpdateVisual() { }
+    
 }
