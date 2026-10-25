@@ -16,6 +16,8 @@ GameObject:
   - component: {fileID: 6551031519884060624}
   - component: {fileID: 7076229178235275677}
   - component: {fileID: 1250072807575179151}
+  - component: {fileID: 8299185010102070534}
+  - component: {fileID: 6027764112724835902}
   m_Layer: 0
   m_Name: Survivor
   m_TagString: Untagged
@@ -57,13 +59,13 @@ CharacterController:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Height: 16.4
+  m_Height: 19.9
   m_Radius: 1.67
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 8.53, z: 0}
+  m_Center: {x: 0, y: 9.87, z: 0}
 --- !u!114 &6345996970281788333
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108,8 +110,7 @@ MonoBehaviour:
   crouchSpeed: 2.5
   turnSpeed: 720
   gravity: -20
-  crouchKey: 306
-  crouchIsToggle: 0
+  crouchKey: 99
   crouchHeightRatio: 0.6
   animator: {fileID: 0}
   spawnOrigin: {x: 0, y: 0.1, z: 0}
@@ -173,6 +174,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SurvivorState
   ShowTopMostFoldoutHeaderGroup: 1
+  injuredColor: {r: 1, g: 0.6, b: 0.2, a: 1}
+  downedColor: {r: 0.85, g: 0.1, b: 0.1, a: 1}
+  chairColor: {r: 0.6, g: 0.3, b: 0.85, a: 1}
+  downedSpeedFactor: 0.3
+  carryOffset: {x: 0, y: 0, z: 0.5}
+  disableNetworkTransformWhileCarried: 0
+  hitImmunity: 1
+  debugKeys: 1
 --- !u!114 &7076229178235275677
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,6 +209,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInteractor
   ShowTopMostFoldoutHeaderGroup: 1
   interactKey: 102
+--- !u!114 &8299185010102070534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8391598782299239889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e90a59d23691a54faaf20b55ab0a946, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HealInteractable
+  ShowTopMostFoldoutHeaderGroup: 1
+  duration: 10
+  range: 2.5
+  visual: {fileID: 0}
+--- !u!114 &6027764112724835902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8391598782299239889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbfcb8c222dc08644bd3e88a30707485, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerVault
+  ShowTopMostFoldoutHeaderGroup: 1
+  vaultKey: 32
+  survivorDuration: 0.6
+  hunterCanVault: 1
+  hunterDuration: 1
+  arcHeight: 0.25
+  minFacing: 0.3
+  scanInterval: 0.1
 --- !u!1001 &2672951682763783715
 PrefabInstance:
   m_ObjectHideFlags: 0
