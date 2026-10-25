@@ -23,6 +23,15 @@ public abstract class NetInteractable : NetworkBehaviour
     protected readonly List<ulong> finishers = new List<ulong>();
     float serverProgress;
 
+    /// <summary>Mọi NetInteractable đang spawn, để khỏi phải FindObjectsByType mỗi lần quét.</summary>
+    public static readonly List<NetInteractable> All = new List<NetInteractable>();
+
+    static readonly int BaseColorId = Shader.PropertyToID("_BaseColor");
+    static readonly int ColorId = Shader.PropertyToID("_Color");
+    static MaterialPropertyBlock colorBlock;
+    Color lastColor;
+    bool hasColor;
+
     public float Range => range;
     public abstract string PromptText { get; }
     public virtual bool IsAvailable => !Done.Value;
@@ -30,13 +39,19 @@ public abstract class NetInteractable : NetworkBehaviour
     public virtual bool IsInstant => false;
     /// <summary>Server hỏi trước khi cho userId làm (ví dụ chặn tự hồi máu cho chính mình). Mặc định cho phép.</summary>
     public virtual bool CanUse(ulong userId) => true;
-
+    /// <summary>Server: userId đang làm thứ này không? Terror Shock dùng để biết Survivor đang hồi máu hoặc cứu người.</summary>
+    public bool IsUsedBy(ulong clientId) => users.Contains(clientId);
+    /// <summary>Người đang làm thứ này bị Hunter đánh trúng thì Gục ngay (Terror Shock). Lớp con bật nếu cần.</summary>
+    public virtual bool TerrorShockOnUse => false;
     protected virtual void OnCompleted() { }
     /// <summary>Server: có người vừa bắt đầu làm. Lớp con ghi đè nếu cần (ghế tên lửa: khóa người cứu).</summary>
     protected virtual void OnUserAdded(ulong id) { }
     /// <summary>Server: có người vừa buông (đi xa, nhấn F lần nữa, bị đánh, rớt mạng...). Không gọi khi làm xong.</summary>
     protected virtual void OnUserRemoved(ulong id) { }
     protected virtual Color GetColor() => Color.Lerp(Color.red, Color.green, Progress.Value);
+
+    public override void OnNetworkSpawn() { All.Add(this); }
+    public override void OnNetworkDespawn() { All.Remove(this); }
 
     /// <summary>Khoảng cách trên mặt phẳng ngang (bỏ qua chênh lệch độ cao).</summary>
     public float FlatDistance(Vector3 p)
@@ -49,6 +64,7 @@ public abstract class NetInteractable : NetworkBehaviour
     [ServerRpc(RequireOwnership = false)]
     public void StartUseServerRpc(ServerRpcParams p = default)
     {
+        if (MatchManager.Ended) return;
         ulong id = p.Receive.SenderClientId;
         if (!IsAvailable || !CanUse(id)) return;
         if (!TryGetSurvivor(id, out Transform t)) return;
@@ -115,7 +131,20 @@ public abstract class NetInteractable : NetworkBehaviour
     protected virtual void UpdateVisual()
     {
         if (visual == null) visual = GetComponentInChildren<Renderer>();
-        if (visual != null) visual.material.color = GetColor();
+        if (visual != null) SetVisualColor(GetColor());
+    }
+
+    /// <summary>Đổi màu bằng MaterialPropertyBlock (không nhân bản material), và chỉ ghi khi màu thật sự đổi.</summary>
+    protected void SetVisualColor(Color c)
+    {
+        if (visual == null || (hasColor && c == lastColor)) return;
+        hasColor = true;
+        lastColor = c;
+        colorBlock ??= new MaterialPropertyBlock();
+        visual.GetPropertyBlock(colorBlock);
+        colorBlock.SetColor(BaseColorId, c);   // URP
+        colorBlock.SetColor(ColorId, c);       // shader cũ
+        visual.SetPropertyBlock(colorBlock);
     }
 
     protected virtual void Update()

@@ -2093,6 +2093,7 @@ GameObject:
   - component: {fileID: 1756352018}
   - component: {fileID: 1756352016}
   - component: {fileID: 1756352020}
+  - component: {fileID: 1756352021}
   m_Layer: 0
   m_Name: NetworkManager
   m_TagString: Untagged
@@ -2220,6 +2221,19 @@ MonoBehaviour:
     PacketDelayMS: 0
     PacketJitterMS: 0
     PacketDropRate: 0
+--- !u!114 &1756352021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1756352010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf062cb783018a041941e0512ff4cb11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NetStatsLogger
+  intervalSeconds: 1
 --- !u!1 &1825591284
 GameObject:
   m_ObjectHideFlags: 0

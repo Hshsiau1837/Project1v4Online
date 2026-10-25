@@ -55,8 +55,8 @@ public class InteractUI : MonoBehaviour
         PlayerVault pv = PlayerVault.Local;
         if (pv != null && pv.Target != null) return $"[{pv.Key}] Nhảy qua cửa sổ";
 
-        HunterAttack ha = HunterAttack.Local;
-        if (ha != null && !string.IsNullOrEmpty(ha.Prompt)) return ha.Prompt;
+        HunterCarry hc = HunterCarry.Local;
+        if (hc != null && !string.IsNullOrEmpty(hc.Prompt)) return hc.Prompt;
 
         return null;
     }
