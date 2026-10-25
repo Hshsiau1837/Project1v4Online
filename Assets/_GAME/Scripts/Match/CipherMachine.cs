@@ -5,6 +5,7 @@
 public class CipherMachine : NetInteractable
 {
     public override string PromptText => "Giải mã máy";
+    public override bool TerrorShockOnUse => true;
 
     public override bool IsAvailable =>
         !Done.Value && !(MatchManager.Instance != null && MatchManager.Instance.GatesPowered.Value);

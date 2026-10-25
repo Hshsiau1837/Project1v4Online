@@ -46,16 +46,47 @@ public class NetworkPlayerMovement : NetworkBehaviour
     bool capsuleCrouched;
     int lastShownState = -1;
 
-    bool locked;
+    float timedLockUntil;
+    readonly System.Collections.Generic.HashSet<object> lockers = new System.Collections.Generic.HashSet<object>();
     float speedMultiplier = 1f;
 
     public bool IsVaulting { get; private set; }
+    float boostMultiplier = 1f;
+    float boostUntil;
 
-    public void SetLocked(bool on)
+    //Tăng tốc tạm thời (ví dụ sau khi bị đánh). Chỉ gọi trên máy owner
+    public void AddSpeedBoost(float multiplier, float seconds)
     {
-        if (locked == on) return;
-        locked = on;
-        if (on) StopMoving();
+        boostMultiplier = Mathf.Max(1f, multiplier);
+        boostUntil = Time.time + seconds;
+    }
+
+    /// <summary>Đang di chuyển (chạy hoặc đi ngồi thấp). Đọc từ biến đã đồng bộ nên máy nào cũng dùng được.</summary>
+    public bool IsMovingNet => netState.Value == (byte)MoveState.Running || netState.Value == (byte)MoveState.CrouchWalk;
+
+    /// <summary>Đang chạy (không phải ngồi thấp).</summary>
+    public bool IsRunningNet => netState.Value == (byte)MoveState.Running;
+
+    /// <summary>Đang nhảy cửa sổ. Server dùng để xét Terror Shock.</summary>
+    public bool IsVaultingNet => netState.Value == (byte)MoveState.Vaulting;
+    /// <summary>Đang bị khóa di chuyển (đang làm động tác, bị bế, trên ghế...). Các script hành động khác (nhảy cửa sổ...) cũng phải tôn trọng.</summary>
+    public bool IsLocked => lockers.Count > 0 || Time.time < timedLockUntil;
+
+    /// <summary>Khóa di chuyển và thao tác trong seconds giây (đánh, bế, thả...). Chỉ gọi trên máy chủ nhân.</summary>
+    public void LockFor(float seconds)
+    {
+        if (seconds <= 0f) return;
+        bool was = IsLocked;
+        timedLockUntil = Mathf.Max(timedLockUntil, Time.time + seconds);
+        if (!was) StopMoving();
+    }
+
+    /// <summary>Mỗi nơi khóa tự khai báo (truyền this) nên mở khóa của nơi này không mở nhầm khóa của nơi khác.</summary>
+    public void SetLocked(object source, bool on)
+    {
+        bool was = IsLocked;
+        if (on) lockers.Add(source); else lockers.Remove(source);
+        if (!was && IsLocked) StopMoving();
     }
 
     public void SetSpeedMultiplier(float m) { speedMultiplier = Mathf.Max(0f, m); }
@@ -130,7 +161,7 @@ public class NetworkPlayerMovement : NetworkBehaviour
     {
         if (cam == null && Camera.main != null) cam = Camera.main.transform;
 
-        if (locked || IsVaulting) return;
+        if (IsLocked || IsVaulting) return;
 
         // --- Crouch (Bấm C 1 lần là ngồi, bấm lại 1 lần là đứng) ---
         if (Input.GetKeyDown(crouchKey))
@@ -158,7 +189,7 @@ public class NetworkPlayerMovement : NetworkBehaviour
         }
 
         // --- Di chuyển ---
-        float speed = (crouching ? crouchSpeed : runSpeed) * speedMultiplier;
+        float speed = (crouching ? crouchSpeed : runSpeed) * speedMultiplier * (Time.time < boostUntil ? boostMultiplier : 1f);
         if (cc.isGrounded && verticalVelocity < 0f) verticalVelocity = -2f;
         verticalVelocity += gravity * Time.deltaTime;
 
@@ -179,7 +210,6 @@ public class NetworkPlayerMovement : NetworkBehaviour
         float h = crouch ? standHeight * crouchHeightRatio : standHeight;
         float bottom = standCenter.y - standHeight * 0.5f;
         cc.height = h;
-        // Đã sửa lỗi h0.5f thành h * 0.5f
         cc.center = new Vector3(standCenter.x, bottom + h * 0.5f, standCenter.z);
     }
 

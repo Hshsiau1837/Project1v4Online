@@ -17,6 +17,8 @@ public class HealInteractable : NetInteractable
         state = GetComponent<SurvivorState>();
     }
 
+    public override bool TerrorShockOnUse => true;
+
     public override string PromptText =>
         state != null && state.Current == SurvivorHealth.Downed ? "Đỡ đồng đội dậy" : "Hồi máu đồng đội";
 
