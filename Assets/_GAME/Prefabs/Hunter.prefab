@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 5466132099389963033}
   - component: {fileID: 6330567511165235800}
   - component: {fileID: 523808871296315755}
+  - component: {fileID: 8434624316227535025}
+  - component: {fileID: -43353078170136299}
   m_Layer: 0
   m_Name: Hunter
   m_TagString: Untagged
@@ -75,7 +77,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 2426408555
+  GlobalObjectIdHash: 1456569188
   InScenePlacedSourceGlobalObjectIdHash: 0
   m_InScenePlacedDisabledByDefault: 0
   DeferredDespawnTick: 0
@@ -185,15 +187,58 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HunterAttack
   ShowTopMostFoldoutHeaderGroup: 1
   attackMouseButton: 0
-  pickupKey: 102
-  dropKey: 113
   reach: 1.8
   halfAngle: 60
   cooldown: 1
+  lockOnHit: 4.5
+  lockOnMiss: 0.8
+  recoveryDelay: 0.3
+  animator: {fileID: 0}
+--- !u!114 &8434624316227535025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3023247272757464774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f3b8a1c7d2e4a96b0c1e8d4a7f29b63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HunterCarry
+  ShowTopMostFoldoutHeaderGroup: 1
+  pickupKey: 102
+  dropKey: 113
+  lockOnPickup: 3
+  lockOnDrop: 2
+  lockOnPlace: 2
   pickupRange: 2
   chairRange: 2.5
   carrySpeedFactor: 0.85
   animator: {fileID: 0}
+--- !u!114 &-43353078170136299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3023247272757464774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88fe93417d7f56740b1a1a5766cb41da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FootprintTracker
+  ShowTopMostFoldoutHeaderGroup: 1
+  hunterLeavesMarks: 1
+  hunterInterval: 0.6
+  hunterLifetime: 5
+  hunterMarksWhenCrouchWalking: 1
+  survivorLeavesMarks: 1
+  runInterval: 1
+  runLifetime: 4
+  markColor: {r: 1, g: 0.25, b: 0.2, a: 1}
+  markSize: 0.5
+  viewRange: 40
 --- !u!1001 &1860241275045289963
 PrefabInstance:
   m_ObjectHideFlags: 0

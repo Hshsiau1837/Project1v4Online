@@ -88,7 +88,7 @@ public class PlayerInteractor : NetworkBehaviour
     {
         NetInteractable best = null;
         float bestDist = float.MaxValue;
-        foreach (NetInteractable it in FindObjectsByType<NetInteractable>(FindObjectsSortMode.None))
+        foreach (NetInteractable it in NetInteractable.All)
         {
             if (!it.IsSpawned || !it.IsAvailable || !it.CanUse(OwnerClientId)) continue;
             float d = it.FlatDistance(transform.position);

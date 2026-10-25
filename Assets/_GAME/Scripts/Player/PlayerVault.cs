@@ -73,7 +73,7 @@ public class PlayerVault : NetworkBehaviour
 
         bool isHunter = role != null && role.CurrentRole == Role.Hunter;
         bool canAct = isHunter ? hunterCanVault : (state == null || state.IsActive);
-        if (!canAct || (interactor != null && interactor.IsWorking))
+        if (!canAct || (move != null && move.IsLocked) || (interactor != null && interactor.IsWorking))
         {
             target = null;
             return;

@@ -4,7 +4,7 @@ using UnityEngine;
 
 /// <summary>
 /// Ghế tên lửa. Gắn NetworkObject + script này vào RocketChair_1..N trong scene Match (đặt sẵn trong scene).
-///  - Hunter đặt người đang Gục lên ghế (HunterAttack gọi ServerPlace); SERVER đếm ngược, hết giờ thì người đó bị loại.
+///  - Hunter đặt người đang Gục lên ghế (HunterCarry gọi ServerPlace); SERVER đếm ngược, hết giờ thì người đó bị loại.
 ///  - Survivor khác nhấn F gần ghế để cứu (thanh tiến độ tự chạy như giải mã); xong thì người trên ghế về Bị thương.
 /// Kế thừa NetInteractable: "Progress" ở đây là tiến độ CỨU, "duration" là số giây cứu.
 /// Luật cứu: mỗi ghế chỉ MỘT người cứu tại một thời điểm (đang có người cứu thì Survivor khác không cứu được);
@@ -33,9 +33,15 @@ public class RocketChair : NetInteractable
     float lastSentTimeLeft;   // server
     int shownSeconds = -1;    // mọi máy
 
+    public static readonly System.Collections.Generic.List<RocketChair> All = new System.Collections.Generic.List<RocketChair>();
+
     public bool IsFree => OccupantId.Value == None;
 
+    public override void OnNetworkSpawn() { base.OnNetworkSpawn(); All.Add(this); }
+    public override void OnNetworkDespawn() { base.OnNetworkDespawn(); All.Remove(this); }
+
     public override string PromptText => "Cứu đồng đội khỏi ghế";
+    public override bool TerrorShockOnUse => true;
     public override bool IsAvailable => IsSpawned && OccupantId.Value != None;
 
 
